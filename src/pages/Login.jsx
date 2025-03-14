@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import useAuthStore from "../core/store/useAuthStore";
-import useShoppingListStore from "../core/store/useShoppingListStore";
 import Loader from "../components/svg-icons/Loader";
 import validEmail from "../core/utils/validEmail";
 
@@ -13,7 +12,6 @@ const Login = () => {
 
   const navigate = useNavigate();
   const { isAuthenticated, login } = useAuthStore();
-  //   const { setCurrentUser } = useShoppingListStore();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -30,8 +28,7 @@ const Login = () => {
       setTimeout(() => {
         setIsLoading(false);
         login({ email });
-        // setCurrentUser(email);
-        // navigate("/");
+        navigate("/");
       }, 1500);
     } else {
       setIsLoading(false);
